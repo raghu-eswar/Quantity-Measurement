@@ -13,5 +13,6 @@ public abstract class Unit {
         return (Double.compare(that.getUnitValue(), this.getUnitValue()) == 0);
     }
 
-    protected abstract double getUnitValue();
+    public abstract double getUnitValue();
+
 }

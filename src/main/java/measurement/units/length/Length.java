@@ -13,7 +13,7 @@ public class Length extends Unit {
         this.conversionFactor = conversionFactor;
     }
 
-    public  <T extends Length> T convertTo(LengthUnits type) {
+    public  <T extends Unit> T convertTo(LengthUnits type) {
         Class<T> aClass = (Class<T>) type._class;
         double unitValue = this.getUnitValue();
         T t = null;
@@ -29,7 +29,15 @@ public class Length extends Unit {
         return t;
     }
 
-    protected double getUnitValue() {
+    public Length add(Length unit) {
+        unit = unit.convertTo(this.unitType);
+        this.value = Math.round((this.value+ unit.value)*100)/100.0;
+        return this;
+    }
+
+
+    public double getUnitValue() {
         return Math.round((this.value * this.conversionFactor) * 100.0)/100.0;
     }
+
 }

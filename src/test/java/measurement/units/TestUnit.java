@@ -30,4 +30,31 @@ public class TestUnit {
         Assert.assertEquals(LengthUnits.KILOMETER, kilometre.unitType);
     }
 
+    @Test
+    public void givenValidMeter_thenAdd_shouldAddCentimeter() {
+        Meter meter = new Meter(1);
+        meter.add(new Centimeter(100));
+        Assert.assertEquals(2.00, meter.value, 0.0);
+        Assert.assertEquals(LengthUnits.METER, meter.unitType);
+    }
+
+    @Test
+    public void givenValidMeter_thenAdd_shouldAddMeter() {
+        Meter meter = new Meter(1);
+        meter.add(new Meter(1));
+        Assert.assertEquals(2.00, meter.value, 0.0);
+        Assert.assertEquals(LengthUnits.METER, meter.unitType);
+    }
+
+    @Test
+    public void givenValidMeter_thenAdd_shouldAddYard() {
+        Meter meter = new Meter(1);
+        meter.add(new Yard(1));
+        Assert.assertEquals(1.91, meter.value, 0.0);
+        Assert.assertEquals(LengthUnits.METER, meter.unitType);
+    }
+
 }
+
+
+

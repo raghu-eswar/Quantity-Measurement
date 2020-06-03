@@ -1,9 +1,12 @@
 package measurement.units;
 
-public class Inch extends Unit {
+import measurement.units.length.Length;
+
+public class Inch extends Length {
     static final double CONVERSION_FACTOR = 1;
 
     public Inch(double value) {
+        super(CONVERSION_FACTOR);
         this.value = value;
         this.unitType = LengthUnits.INCH;
     }
@@ -12,8 +15,4 @@ public class Inch extends Unit {
         this(1);
     }
 
-    @Override
-    public double getUnitValue() {
-        return this.value * CONVERSION_FACTOR;
-    }
 }

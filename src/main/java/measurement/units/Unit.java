@@ -1,8 +1,7 @@
 package measurement.units;
 
 public abstract class Unit {
-    double value;
-    LengthUnits unitType;
+    protected double value;
 
     @Override
     public boolean equals(Object o) {

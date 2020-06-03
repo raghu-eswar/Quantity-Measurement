@@ -11,6 +11,6 @@ public class Length extends Unit {
     }
 
     protected double getUnitValue() {
-        return this.value * this.conversionFactor;
+        return Math.round((this.value * this.conversionFactor) * 100.0)/100.0;
     }
 }

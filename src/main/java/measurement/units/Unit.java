@@ -8,6 +8,8 @@ public abstract class Unit {
         if (this == o) return true;
         if (o == null || getClass().getSuperclass() != o.getClass().getSuperclass()) return false;
         Unit that = (Unit) o;
+        double temp1 = that.getUnitValue();
+        double temp2 = this.getUnitValue();
         return (Double.compare(that.getUnitValue(), this.getUnitValue()) == 0);
     }
 

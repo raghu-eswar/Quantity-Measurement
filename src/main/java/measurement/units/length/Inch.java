@@ -1,7 +1,7 @@
 package measurement.units.length;
 
-public class Inch extends Length {
-    static final double CONVERSION_FACTOR = 1;
+public final class Inch extends Length {
+    private static final double CONVERSION_FACTOR = 25.4;
 
     public Inch(double value) {
         super(CONVERSION_FACTOR);

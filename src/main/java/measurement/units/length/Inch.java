@@ -1,6 +1,4 @@
-package measurement.units;
-
-import measurement.units.length.Length;
+package measurement.units.length;
 
 public class Inch extends Length {
     static final double CONVERSION_FACTOR = 1;

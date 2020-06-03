@@ -1,7 +1,7 @@
 package measurement.converter;
 
-import measurement.units.Feet;
-import measurement.units.Inch;
+import measurement.units.length.Feet;
+import measurement.units.length.Inch;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

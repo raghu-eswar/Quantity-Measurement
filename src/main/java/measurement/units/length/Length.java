@@ -1,6 +1,5 @@
 package measurement.units.length;
 
-import measurement.units.LengthUnits;
 import measurement.units.Unit;
 
 public class Length extends Unit {

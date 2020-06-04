@@ -2,39 +2,34 @@ package measurement.units.length;
 
 import measurement.units.Unit;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+
+import static measurement.units.length.Units.*;
 
 public class Length extends Unit {
-    protected final double conversionFactor;
-    public LengthUnits unitType;
+    private final double conversionFactor;
+    protected static Units[] validUnits = {INCH, FEET, YARD, MILLIMETER, MILE, CENTIMETER, METER, KILOMETER};
 
-    protected Length(double conversionFactor) {
-        this.conversionFactor = conversionFactor;
+    public Length(double value, Units unitType) {
+        this.value = value;
+        this.unitType = unitType;
+        this.conversionFactor = unitType.conversionFactor;
     }
 
-    public  <T extends Unit> T convertTo(LengthUnits type) {
-        Class<T> aClass = (Class<T>) type._class;
-        double unitValue = this.getUnitValue();
-        T t = null;
-        try {
-            Constructor<T> constructor = aClass.getConstructor(double.class);
-            t = constructor.newInstance(1);
-        } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        assert t != null;
-        double unitValue1 = t.getUnitValue();
-        t.value = Math.round((unitValue / unitValue1) * 100.0)/100.0;
-        return t;
+    public Length convertTo(Units type) {
+        if (Arrays.stream(validUnits).noneMatch(type::equals))
+            throw new RuntimeException("can not convert "+this.unitType+" to "+type);
+        this.value = Math.round((this.getUnitValue() / type.conversionFactor) * 100.0)/100.0;
+        this.unitType = type;
+        return this;
     }
 
-    public Length add(Length unit) {
+    @Override
+    public Unit add(Unit unit) {
         unit = unit.convertTo(this.unitType);
         this.value = Math.round((this.value+ unit.value)*100)/100.0;
         return this;
     }
-
 
     public double getUnitValue() {
         return Math.round((this.value * this.conversionFactor) * 100.0)/100.0;

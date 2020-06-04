@@ -1,14 +1,13 @@
 package measurement.units.length;
 
-import measurement.units.Unit;
+public enum Units {
+    INCH(25.4), FEET(304.8), YARD(914.4), MILLIMETER(1),
+    MILE( 1609344), CENTIMETER( 10), METER( 1000),
+    KILOMETER( 1000000);
+    public double conversionFactor;
 
-public enum LengthUnits {
-    INCH(Inch.class), FEET(Feet.class), YARD(Yard.class), MILLIMETER(Millimeter.class), MILE(Mile.class),
-    CENTIMETER(Centimeter.class), METER(Meter.class), KILOMETER(Kilometre.class);
-    public Class<? extends Unit> _class;
-
-    LengthUnits(Class<? extends Unit> _class) {
-        this._class = _class;
+    Units(double conversionFactor) {
+        this.conversionFactor = conversionFactor;
     }
 
 }

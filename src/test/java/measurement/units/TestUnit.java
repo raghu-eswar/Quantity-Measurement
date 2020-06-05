@@ -164,6 +164,24 @@ public class TestUnit {
         assertNotEquals(new Temperature(32, CELSIUS), new Temperature(275.15, KELVIN));
     }
 
+    @Test
+    public void givenValidFahrenheit_thenConvertTo_shouldConvertToKelvin() {
+        Temperature fahrenheit = new Temperature(1, FAHRENHEIT);
+        assertEquals(new Temperature(255.93, KELVIN), fahrenheit.convertTo(KELVIN));
+    }
+
+    @Test
+    public void givenValidFahrenheit_thenConvertTo_shouldConvertToCelsius() {
+        Temperature fahrenheit = new Temperature(400, FAHRENHEIT);
+        assertEquals(new Temperature(204.44, CELSIUS), fahrenheit.convertTo(CELSIUS));
+    }
+
+    @Test
+    public void givenValidKelvin_thenConvertTo_shouldConvertToCelsius() {
+        Temperature kelvin = new Temperature(1, KELVIN);
+        assertEquals(new Temperature(-272.15, CELSIUS), kelvin.convertTo(CELSIUS));
+    }
+
 }
 
 

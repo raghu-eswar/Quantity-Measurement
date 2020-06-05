@@ -27,6 +27,8 @@ public class Length extends Unit {
 
     @Override
     public Unit add(Unit unit) {
+        if (Arrays.stream(validUnits).noneMatch(unit.unitType::equals))
+            throw new RuntimeException("can not add "+unit.unitType+" to "+this.unitType);
         unit = unit.convertTo(this.unitType);
         this.value = Math.round((this.value+ unit.value)*100.00)/100.00;
         return this;

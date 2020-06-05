@@ -227,6 +227,24 @@ public class TestUnit {
         }
     }
 
+    @Test
+    public void givenValidCelsius_thenAdd_shouldAddCelsius() {
+        Temperature celsius = new Temperature(20, CELSIUS);
+        assertEquals(new Temperature(25, CELSIUS), celsius.add(new Temperature(30, CELSIUS)));
+    }
+
+    @Test
+    public void givenValidCelsius_thenAdd_shouldAddKelvin() {
+        Temperature celsius = new Temperature(20, CELSIUS);
+        assertEquals(new Temperature(25, CELSIUS), celsius.add(new Temperature(303.15, KELVIN)));
+    }
+
+    @Test
+    public void givenValidFahrenheit_thenAdd_shouldAddKelvin() {
+        Temperature fahrenheit = new Temperature(19.99, FAHRENHEIT);
+        assertEquals(new Temperature(52.98, FAHRENHEIT), fahrenheit.add(new Temperature(303.15, KELVIN)));
+    }
+
 }
 
 

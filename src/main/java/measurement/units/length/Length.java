@@ -28,7 +28,7 @@ public class Length extends Unit {
     }
 
     @Override
-    public Unit add(Unit unit) {
+    public Length add(Unit unit) {
         if (Arrays.stream(validUnits).noneMatch(unit.unitType::equals))
             throw new RuntimeException("can not add "+unit.unitType+" to "+this.unitType);
         unit = unit.convertTo(this.unitType);

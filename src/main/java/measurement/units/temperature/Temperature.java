@@ -28,8 +28,10 @@ public class Temperature extends Unit {
     }
 
     @Override
-    public Unit add(Unit unit) {
-        return null;
+    public Temperature add(Unit unit) {
+        unit = unit.convertTo(this.unitType);
+        this.value = (this.value + unit.value) / 2;
+        return this;
     }
 
     @Override

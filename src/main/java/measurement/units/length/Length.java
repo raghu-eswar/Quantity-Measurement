@@ -7,7 +7,7 @@ import java.util.Arrays;
 import static measurement.units.Units.*;
 
 public class Length extends Unit {
-    private final double conversionFactor;
+    private double conversionFactor;
     protected static Units[] validUnits = {INCH, FEET, YARD, MILLIMETER, MILE, CENTIMETER, METER, KILOMETER};
 
     public Length(double value, Units unitType) {
@@ -20,7 +20,7 @@ public class Length extends Unit {
     public Length convertTo(Units type) {
         if (Arrays.stream(validUnits).noneMatch(type::equals))
             throw new RuntimeException("can not convert "+this.unitType+" to "+type);
-        this.value = Math.round((this.getUnitValue() / type.conversionFactor) * 100.00)/100.00;
+        this.value = Math.round((this.getUnitValue() / (this.conversionFactor = type.conversionFactor)) * 100.00)/100.00;
         this.unitType = type;
         return this;
     }

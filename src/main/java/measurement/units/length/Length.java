@@ -11,6 +11,8 @@ public class Length extends Unit {
     protected static Units[] validUnits = {INCH, FEET, YARD, MILLIMETER, MILE, CENTIMETER, METER, KILOMETER};
 
     public Length(double value, Units unitType) {
+        if (Arrays.stream(validUnits).noneMatch(unitType::equals))
+            throw new RuntimeException(unitType+" is not a unit of Length");
         this.value = value;
         this.unitType = unitType;
         this.conversionFactor = unitType.conversionFactor;

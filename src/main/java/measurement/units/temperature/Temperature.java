@@ -13,11 +13,13 @@ public class Temperature extends Unit {
     private double temperatureConversionFactor;
     protected static Units[] validUnits = {CELSIUS, KELVIN, FAHRENHEIT};
 
-    public Temperature(double value, Units type) {
+    public Temperature(double value, Units unitType) {
+        if (Arrays.stream(validUnits).noneMatch(unitType::equals))
+            throw new RuntimeException(unitType+" is not a unit of Temperature");
         this.value = value;
-        this.conversionFactor = type.conversionFactor;
-        this.temperatureConversionFactor = TemperatureConversionFactors.valueOf(type.name()).conversionFactor;
-        this.unitType = type;
+        this.conversionFactor = unitType.conversionFactor;
+        this.temperatureConversionFactor = TemperatureConversionFactors.valueOf(unitType.name()).conversionFactor;
+        this.unitType = unitType;
     }
 
     @Override

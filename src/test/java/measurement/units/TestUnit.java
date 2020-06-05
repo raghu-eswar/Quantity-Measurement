@@ -182,6 +182,51 @@ public class TestUnit {
         assertEquals(new Temperature(-272.15, CELSIUS), kelvin.convertTo(CELSIUS));
     }
 
+    @Test
+    public void givenInvalidTemperatureConversionType_constructor_shouldThrowException() {
+        try{
+            new Temperature(1, METER);
+        } catch (RuntimeException e) {
+            assertEquals("METER is not a unit of Temperature", e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenInvalidLengthConversionType_constructor_shouldThrowException() {
+        try{
+            new Temperature(1, CELSIUS);
+        } catch (RuntimeException e) {
+            assertEquals("CELSIUS is not a unit of Length", e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenInvalidTemperatureConversionType_thenConvertTo_shouldThrowException() {
+        try{
+            new Temperature(1, CELSIUS).convertTo(METER);
+        } catch (RuntimeException e) {
+            assertEquals("can not convert CELSIUS to METER", e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenInvalidLengthConversionType_thenConvertTo_shouldThrowException() {
+        try{
+            new Length(1, METER).convertTo(CELSIUS);
+        } catch (RuntimeException e) {
+            assertEquals("can not convert METER to CELSIUS", e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenInvalidLengthConversionType_thenAdd_shouldThrowException() {
+        try{
+            new Length(1, METER).add(new Temperature(1, CELSIUS));
+        } catch (RuntimeException e) {
+            assertEquals("can not add CELSIUS to METER", e.getMessage());
+        }
+    }
+
 }
 
 

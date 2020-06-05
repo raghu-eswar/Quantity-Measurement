@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static measurement.units.length.Units.*;
+import static measurement.units.Units.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestConverter {
@@ -39,7 +39,7 @@ public class TestConverter {
 
     @Test
     public void givenEquivalentValuesOfFeetAndInch_thenAreEqual_shouldReturnTrue() {
-        boolean status = converter.areEqual(new Length(1,FEET), new Length(12, INCH));
+        boolean status = converter.areEqual(new Length(1,FEET), new Length(12.00, INCH));
         Assert.assertTrue(status);
     }
 

@@ -1,7 +1,6 @@
 package measurement.converter;
 
 import measurement.units.Unit;
-import measurement.units.length.Length;
 
 public class Converter {
 

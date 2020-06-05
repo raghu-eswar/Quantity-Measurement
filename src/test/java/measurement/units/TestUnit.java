@@ -1,10 +1,11 @@
 package measurement.units;
 
 import measurement.units.length.*;
+import measurement.units.temperature.Temperature;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static measurement.units.length.Units.*;
+import static measurement.units.Units.*;
 
 public class TestUnit {
 
@@ -54,6 +55,70 @@ public class TestUnit {
         meter.add(new Length(1, YARD));
         Assert.assertEquals(1.91, meter.value, 0.0);
         Assert.assertEquals(METER, meter.unitType);
+    }
+
+    @Test
+    public void givenZeroValuesOfCelsiusAndKelvin_thenEqual_shouldReturnFalse() {
+        Temperature celsius = new Temperature(0, CELSIUS);
+        Temperature kelvin = new Temperature(0, KELVIN);
+        boolean status = celsius.equals(kelvin);
+        Assert.assertFalse(status);
+    }
+
+    @Test
+    public void givenZeroValuesOfCelsiusAndFahrenheit_thenEqual_shouldReturnFalse() {
+        Temperature celsius = new Temperature(0, CELSIUS);
+        Temperature fahrenheit = new Temperature(0, FAHRENHEIT);
+        boolean status = celsius.equals(fahrenheit);
+        Assert.assertFalse(status);
+    }
+
+    @Test
+    public void givenEquivalentZeroValuesOfCelsiusAndFahrenheit_thenEqual_shouldReturnFalse() {
+        Temperature celsius = new Temperature(0, CELSIUS);
+        Temperature fahrenheit = new Temperature(32, FAHRENHEIT);
+        boolean status = celsius.equals(fahrenheit);
+        Assert.assertTrue(status);
+    }
+
+    @Test
+    public void givenEquivalentZeroValuesOfFahrenheit_thenEqual_shouldReturnFalse() {
+        Temperature celsius = new Temperature(0, FAHRENHEIT);
+        Temperature fahrenheit = new Temperature(0, FAHRENHEIT);
+        boolean status = celsius.equals(fahrenheit);
+        Assert.assertTrue(status);
+    }
+
+    @Test
+    public void givenEquivalentZeroValuesOfCelsiusAndKelvin_thenEqual_shouldReturnFalse() {
+        Temperature celsius = new Temperature(0, CELSIUS);
+        Temperature kelvin = new Temperature(273.15, KELVIN);
+        boolean status = celsius.equals(kelvin);
+        Assert.assertTrue(status);
+    }
+
+    @Test
+    public void givenEquivalentValuesOfCelsiusAndKelvin_thenEqual_shouldReturnFalse() {
+        Temperature celsius = new Temperature(2, CELSIUS);
+        Temperature kelvin = new Temperature(275.15, KELVIN);
+        boolean status = celsius.equals(kelvin);
+        Assert.assertTrue(status);
+    }
+
+    @Test
+    public void givenEquivalentValuesOfCelsiusAndFahrenheit_thenEqual_shouldReturnFalse() {
+        Temperature celsius = new Temperature(2, CELSIUS);
+        Temperature fahrenheit = new Temperature(35.6, FAHRENHEIT);
+        boolean status = celsius.equals(fahrenheit);
+        Assert.assertTrue(status);
+    }
+
+    @Test
+    public void givenEquivalentValuesOfKelvinAndFahrenheit_thenEqual_shouldReturnFalse() {
+        Temperature celsius = new Temperature(2, KELVIN);
+        Temperature fahrenheit = new Temperature(-456.07, FAHRENHEIT);
+        boolean status = celsius.equals(fahrenheit);
+        Assert.assertTrue(status);
     }
 
 }

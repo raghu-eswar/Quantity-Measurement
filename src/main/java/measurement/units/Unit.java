@@ -1,7 +1,5 @@
 package measurement.units;
 
-import measurement.units.length.Units;
-
 public abstract class Unit {
     public double value;
     public Units unitType;
@@ -10,8 +8,10 @@ public abstract class Unit {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass().getSuperclass() != o.getClass().getSuperclass()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Unit that = (Unit) o;
+        double d = that.getUnitValue();
+        double d1 = this.getUnitValue();
         return (Double.compare(that.getUnitValue(), this.getUnitValue()) == 0);
     }
 

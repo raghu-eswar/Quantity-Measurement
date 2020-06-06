@@ -32,6 +32,7 @@ public class Length extends Property {
         return this;
     }
 
+    @Override
     public double getUnitValue() {
         return Math.round((this.value * this.conversionFactor) * 100.00)/100.00;
     }

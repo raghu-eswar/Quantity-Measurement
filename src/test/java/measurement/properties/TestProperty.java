@@ -2,6 +2,7 @@ package measurement.properties;
 
 import measurement.properties.length.*;
 import measurement.properties.temperature.Temperature;
+import measurement.properties.volume.Volume;
 import org.junit.Test;
 
 import static measurement.properties.Units.*;
@@ -243,6 +244,37 @@ public class TestProperty {
     public void givenValidFahrenheit_thenAdd_shouldAddKelvin() {
         Temperature fahrenheit = new Temperature(19.99, FAHRENHEIT);
         assertEquals(new Temperature(52.98, FAHRENHEIT), fahrenheit.add(new Temperature(303.15, KELVIN)));
+    }
+
+    @Test
+    public void givenZeroValuesOfCubicInchAndCubicFeet_shouldBeEqual() {
+        assertEquals(new Volume(0, CUBIC_INCH), new Volume(0, CUBIC_FEET));
+
+    }
+
+    @Test
+    public void givenEquivalentValuesOfCubicInchAndCubicFeet_shouldBeEqual() {
+        assertEquals(new Volume(3456, CUBIC_INCH), new Volume(2, CUBIC_FEET));
+    }
+
+    @Test
+    public void givenEquivalentValuesOfCubicMeterAndCubicFeet_shouldBeEqual() {
+        assertEquals(new Volume(0.0566337, CUBIC_METER), new Volume(2, CUBIC_FEET));
+    }
+
+    @Test
+    public void givenEquivalentValuesOfLiterAndCubicFeet_shouldBeEqual() {
+        assertEquals(new Volume(28.3168, LITER), new Volume(1, CUBIC_FEET));
+    }
+
+    @Test
+    public void givenEquivalentValuesOfGallonAndCubicLiters_shouldBeEqual() {
+        assertEquals(new Volume(1, GALLON), new Volume(3.78541, LITER));
+    }
+
+    @Test
+    public void givenEquivalentValuesOfLitterAndCubicMilliliters_shouldBeEqual() {
+        assertEquals(new Volume(1, LITER), new Volume(1000, MILLI_LITERS));
     }
 
 }

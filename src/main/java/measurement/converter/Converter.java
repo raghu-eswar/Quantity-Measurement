@@ -1,13 +1,13 @@
 package measurement.converter;
 
-import measurement.units.Unit;
+import measurement.properties.Property;
 
 public class Converter {
 
-    public boolean areEqual(Unit unit1, Unit unit2) {
-        if (unit1 == null)
+    public boolean areEqual(Property property1, Property property2) {
+        if (property1 == null)
             return false;
-        return unit1.equals(unit2);
+        return property1.equals(property2);
     }
 
 }

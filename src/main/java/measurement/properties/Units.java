@@ -1,4 +1,4 @@
-package measurement.units;
+package measurement.properties;
 
 public enum Units {
     INCH(25.4, "LENGTH"), FEET(304.8, "LENGTH"), YARD(914.4, "LENGTH"),

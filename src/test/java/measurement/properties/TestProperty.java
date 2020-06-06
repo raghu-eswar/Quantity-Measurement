@@ -1,14 +1,14 @@
-package measurement.units;
+package measurement.properties;
 
-import measurement.units.length.*;
-import measurement.units.temperature.Temperature;
+import measurement.properties.length.*;
+import measurement.properties.temperature.Temperature;
 import org.junit.Test;
 
-import static measurement.units.Units.*;
+import static measurement.properties.Units.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class TestUnit {
+public class TestProperty {
 
     @Test
     public void givenZeroValuesOfFeetAndInch_shouldBeEqual() {

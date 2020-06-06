@@ -277,6 +277,22 @@ public class TestProperty {
         assertEquals(new Volume(1, LITER), new Volume(1000, MILLI_LITERS));
     }
 
+    @Test
+    public void givenValidLiters_thenConvertTo_shouldConvertToMilliliters() {
+        Volume volume = new Volume(1, LITER);
+        assertEquals(volume.convertTo(MILLI_LITERS), new Volume(1000, MILLI_LITERS));
+    }
+    @Test
+    public void givenValidGallon_thenConvertTo_shouldConvertToLiters() {
+        Volume volume = new Volume(1, GALLON);
+        assertEquals(volume.convertTo(LITER), new Volume(3.79, LITER));
+    }
+
+    @Test
+    public void givenValidLiters_thenConvertTo_shouldConvertToCubicInches() {
+        Volume volume = new Volume(1, LITER);
+        assertEquals(volume.convertTo(CUBIC_INCH), new Volume(61.02, CUBIC_INCH));
+    }
 }
 
 

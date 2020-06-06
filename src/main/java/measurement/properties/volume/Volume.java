@@ -27,7 +27,11 @@ public class Volume extends Property {
     }
 
     @Override
-    public Property convertTo(Units type) {
-        return null;
+    public Volume convertTo(Units type) {
+        if (!type.type.equals("VOLUME"))
+            throw new RuntimeException("can not convert "+this.unitType+" to "+type);
+        this.value = Math.round((this.getUnitValue() / (this.conversionFactor = type.conversionFactor)) * 100.00)/100.00;
+        this.unitType = type;
+        return this;
     }
 }

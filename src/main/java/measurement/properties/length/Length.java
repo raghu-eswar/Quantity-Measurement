@@ -1,9 +1,9 @@
-package measurement.units.length;
+package measurement.properties.length;
 
-import measurement.units.Unit;
-import measurement.units.Units;
+import measurement.properties.Property;
+import measurement.properties.Units;
 
-public class Length extends Unit {
+public class Length extends Property {
     private double conversionFactor;
 
     public Length(double value, Units unitType) {
@@ -24,11 +24,11 @@ public class Length extends Unit {
     }
 
     @Override
-    public Length add(Unit unit) {
-        if (!unit.unitType.type.equals("LENGTH"))
-            throw new RuntimeException("can not add "+ unit.unitType+" to "+this.unitType);
-        unit = unit.convertTo(this.unitType);
-        this.value = Math.round((this.value+ unit.value)*100.00)/100.00;
+    public Length add(Property property) {
+        if (!property.unitType.type.equals("LENGTH"))
+            throw new RuntimeException("can not add "+ property.unitType+" to "+this.unitType);
+        property = property.convertTo(this.unitType);
+        this.value = Math.round((this.value+ property.value)*100.00)/100.00;
         return this;
     }
 

@@ -1,9 +1,9 @@
-package measurement.units.temperature;
+package measurement.properties.temperature;
 
-import measurement.units.Unit;
-import measurement.units.Units;
+import measurement.properties.Property;
+import measurement.properties.Units;
 
-public class Temperature extends Unit {
+public class Temperature extends Property {
 
     private double conversionFactor;
     private double temperatureConversionFactor;
@@ -23,11 +23,11 @@ public class Temperature extends Unit {
     }
 
     @Override
-    public Temperature add(Unit unit) {
-        if (!unit.unitType.type.equals("TEMPERATURE"))
-            throw new RuntimeException("can not add "+ unit.unitType+" to "+this.unitType);
-        unit = unit.convertTo(this.unitType);
-        this.value = (this.value + unit.value) / 2;
+    public Temperature add(Property property) {
+        if (!property.unitType.type.equals("TEMPERATURE"))
+            throw new RuntimeException("can not add "+ property.unitType+" to "+this.unitType);
+        property = property.convertTo(this.unitType);
+        this.value = (this.value + property.value) / 2;
         return this;
     }
 

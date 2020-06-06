@@ -1,6 +1,6 @@
-package measurement.units;
+package measurement.properties;
 
-public abstract class Unit {
+public abstract class Property {
     public double value;
     public Units unitType;
     protected static Units[] validUnits;
@@ -9,14 +9,14 @@ public abstract class Unit {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Unit that = (Unit) o;
+        Property that = (Property) o;
         return (Double.compare(that.getUnitValue(), this.getUnitValue()) == 0);
     }
 
     public abstract double getUnitValue();
 
-    public abstract Unit add(Unit unit);
+    public abstract Property add(Property property);
 
-    public abstract Unit convertTo(Units type);
+    public abstract Property convertTo(Units type);
 
 }

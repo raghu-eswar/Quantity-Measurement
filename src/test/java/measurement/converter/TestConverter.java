@@ -1,7 +1,7 @@
 package measurement.converter;
 
-import measurement.units.length.Length;
-import measurement.units.temperature.Temperature;
+import measurement.properties.length.Length;
+import measurement.properties.temperature.Temperature;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.MockitoRule;
 
-import static measurement.units.Units.*;
+import static measurement.properties.Units.*;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)

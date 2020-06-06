@@ -10,8 +10,6 @@ public abstract class Property {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Property that = (Property) o;
-        double d1 = this.getUnitValue();
-        double d2 = that.getUnitValue();
         return (Double.compare(that.getUnitValue(), this.getUnitValue()) == 0);
     }
 

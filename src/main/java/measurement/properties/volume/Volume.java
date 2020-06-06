@@ -22,8 +22,12 @@ public class Volume extends Property {
     }
 
     @Override
-    public Property add(Property property) {
-        return null;
+    public Volume add(Property property) {
+        if (!property.unitType.type.equals("VOLUME"))
+            throw new RuntimeException("can not add "+ property.unitType+" to "+this.unitType);
+        property = property.convertTo(this.unitType);
+        this.value = this.value+ property.value;
+        return this;
     }
 
     @Override

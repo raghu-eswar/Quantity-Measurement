@@ -3,18 +3,13 @@ package measurement.units.temperature;
 import measurement.units.Unit;
 import measurement.units.Units;
 
-import java.util.Arrays;
-
-import static measurement.units.Units.*;
-
 public class Temperature extends Unit {
 
     private double conversionFactor;
     private double temperatureConversionFactor;
-    protected static Units[] validUnits = {CELSIUS, KELVIN, FAHRENHEIT};
 
     public Temperature(double value, Units unitType) {
-        if (Arrays.stream(validUnits).noneMatch(unitType::equals))
+        if (!unitType.type.equals("TEMPERATURE"))
             throw new RuntimeException(unitType+" is not a unit of Temperature");
         this.value = value;
         this.conversionFactor = unitType.conversionFactor;
@@ -29,6 +24,8 @@ public class Temperature extends Unit {
 
     @Override
     public Temperature add(Unit unit) {
+        if (!unit.unitType.type.equals("TEMPERATURE"))
+            throw new RuntimeException("can not add "+ unit.unitType+" to "+this.unitType);
         unit = unit.convertTo(this.unitType);
         this.value = (this.value + unit.value) / 2;
         return this;
@@ -36,7 +33,7 @@ public class Temperature extends Unit {
 
     @Override
     public Temperature convertTo(Units type) {
-        if (Arrays.stream(validUnits).noneMatch(type::equals))
+        if (!type.type.equals("TEMPERATURE"))
             throw new RuntimeException("can not convert "+this.unitType+" to "+type);
         this.value = Math.round(((this.getUnitValue() - (this.conversionFactor = type.conversionFactor)) /
                 (this.temperatureConversionFactor = TemperatureConversionFactors.valueOf(type.name()).conversionFactor))*100.00)/100.00;

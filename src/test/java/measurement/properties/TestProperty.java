@@ -3,6 +3,7 @@ package measurement.properties;
 import measurement.properties.length.*;
 import measurement.properties.temperature.Temperature;
 import measurement.properties.volume.Volume;
+import measurement.properties.weight.Weight;
 import org.junit.Test;
 
 import static measurement.properties.Units.*;
@@ -89,7 +90,7 @@ public class TestProperty {
     @Test
     public void givenValidMile_thenConvertTo_shouldConvertToKilometer() {
         Length mile = new Length(1, MILE);
-        assertEquals(new Length(1.61, KILOMETER), mile.convertTo(KILOMETER));
+        assertEquals(new Length(1.609, KILOMETER), mile.convertTo(KILOMETER));
     }
 
     @Test
@@ -107,7 +108,7 @@ public class TestProperty {
     @Test
     public void givenValidMeter_thenAdd_shouldAddYard() {
         Length meter = new Length(1, METER);
-        assertEquals(new Length(1.91, METER), meter.add(new Length(1, YARD)));
+        assertEquals(new Length(1.914, METER), meter.add(new Length(1, YARD)));
     }
 
     @Test
@@ -285,7 +286,7 @@ public class TestProperty {
     @Test
     public void givenValidGallon_thenConvertTo_shouldConvertToLiters() {
         Volume volume = new Volume(1, GALLON);
-        assertEquals(volume.convertTo(LITER), new Volume(3.79, LITER));
+        assertEquals(volume.convertTo(LITER), new Volume(3.785, LITER));
     }
 
     @Test
@@ -295,15 +296,33 @@ public class TestProperty {
     }
 
     @Test
-    public void givenValidGalons_thenAdd_shouldAddLiters() {
-        assertEquals(new Volume(3.785, LITER).add(new Volume(1, GALLON)), new Volume(7.575, LITER));
+    public void givenValidGallons_thenAdd_shouldAddLiters() {
+        assertEquals(new Volume(3.785, LITER).add(new Volume(1, GALLON)), new Volume(7.57, LITER));
     }
 
     @Test
     public void givenValidLiters_thenAdd_shouldAddMilliLiters() {
         assertEquals(new Volume(1, LITER).add(new Volume(1000, MILLI_LITERS)), new Volume(2, LITER));
     }
+
+    @Test
+    public void givenEquivalentValuesOfKiloGramsAndGrams_shouldBeEqual() {
+        assertEquals(new Weight(1, KILOGRAM), new Weight(1000, GRAM));
+    }
+
+    @Test
+    public void givenEquivalentValuesOfTonneAndKiloGrams_shouldBeEqual() {
+        assertEquals(new Weight(1, TONNE), new Weight(1000, KILOGRAM));
+    }
+
+    @Test
+    public void givenEquivalentValuesOfPoundAndKiloGrams_shouldBeEqual() {
+        assertEquals(new Weight(2.2046, POUND), new Weight(1, KILOGRAM));
+    }
+
+    @Test
+    public void givenValidTone_thenAdd_shouldAddGrams() {
+        assertEquals(new Weight(1, TONNE).add(new Weight(1000, GRAM)), new Weight(1001, KILOGRAM));
+    }
+
 }
-
-
-

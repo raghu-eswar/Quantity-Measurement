@@ -12,7 +12,7 @@ public abstract class ExtensiveProperty extends Property{
 
     @Override
     public Property convertTo(Units type) {
-        this.value = Math.round((this.getUnitValue() / (this.conversionFactor = type.conversionFactor)) * 100.00)/100.00;
+        this.value = Math.round((this.getUnitValue() / (this.conversionFactor = type.conversionFactor)) * 1000.00)/1000.00;
         this.unitType = type;
         return this;
     }

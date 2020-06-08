@@ -90,7 +90,7 @@ public class TestProperty {
     @Test
     public void givenValidMile_thenConvertTo_shouldConvertToKilometer() {
         Length mile = new Length(1, MILE);
-        assertEquals(new Length(1.609, KILOMETER), mile.convertTo(KILOMETER));
+        assertEquals(new Length(1.60934, KILOMETER), mile.convertTo(KILOMETER));
     }
 
     @Test
@@ -108,7 +108,7 @@ public class TestProperty {
     @Test
     public void givenValidMeter_thenAdd_shouldAddYard() {
         Length meter = new Length(1, METER);
-        assertEquals(new Length(1.914, METER), meter.add(new Length(1, YARD)));
+        assertEquals(new Length(1.9144, METER), meter.add(new Length(1, YARD)));
     }
 
     @Test
@@ -225,7 +225,7 @@ public class TestProperty {
         try{
             new Length(1, METER).add(new Temperature(1, CELSIUS));
         } catch (RuntimeException e) {
-            assertEquals("can not add CELSIUS to METER", e.getMessage());
+            assertEquals("can not convert CELSIUS to METER", e.getMessage());
         }
     }
 
@@ -270,7 +270,7 @@ public class TestProperty {
 
     @Test
     public void givenEquivalentValuesOfGallonAndCubicLiters_shouldBeEqual() {
-        assertEquals(new Volume(1, GALLON), new Volume(3.785, LITER));
+        assertEquals(new Volume(1, GALLON), new Volume(3.78541, LITER));
     }
 
     @Test
@@ -286,13 +286,13 @@ public class TestProperty {
     @Test
     public void givenValidGallon_thenConvertTo_shouldConvertToLiters() {
         Volume volume = new Volume(1, GALLON);
-        assertEquals(volume.convertTo(LITER), new Volume(3.785, LITER));
+        assertEquals(volume.convertTo(LITER), new Volume(3.78541, LITER));
     }
 
     @Test
     public void givenValidLiters_thenConvertTo_shouldConvertToCubicInches() {
         Volume volume = new Volume(1, LITER);
-        assertEquals(volume.convertTo(CUBIC_INCH), new Volume(61.02, CUBIC_INCH));
+        assertEquals(volume.convertTo(CUBIC_INCH), new Volume(61.0237, CUBIC_INCH));
     }
 
     @Test
@@ -317,7 +317,7 @@ public class TestProperty {
 
     @Test
     public void givenEquivalentValuesOfPoundAndKiloGrams_shouldBeEqual() {
-        assertEquals(new Weight(2.2046, POUND), new Weight(1, KILOGRAM));
+        assertEquals(new Weight(2.20462, POUND), new Weight(1, KILOGRAM));
     }
 
     @Test

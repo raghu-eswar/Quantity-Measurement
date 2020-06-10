@@ -10,7 +10,7 @@ public class Temperature extends Property {
             throw new RuntimeException(unitType+" is not a unit of Temperature");
         this.value = value;
         this.multiplicand = unitType.multiplicand;
-        this.addends = unitType.addends;
+        this.addend = unitType.addend;
         this.unitType = unitType;
     }
 

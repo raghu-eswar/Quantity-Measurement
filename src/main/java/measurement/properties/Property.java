@@ -4,7 +4,7 @@ public abstract class Property {
     public double value;
     public Units unitType;
     protected double multiplicand;
-    protected double addends;
+    protected double addend;
 
     @Override
     public boolean equals(Object o) {
@@ -15,7 +15,7 @@ public abstract class Property {
     }
 
     public double getUnitValue()  {
-        return (this.multiplicand * this.value) + this.addends;
+        return (this.multiplicand * this.value) + this.addend;
     }
 
     public Property add(Property property) {
@@ -27,7 +27,7 @@ public abstract class Property {
     public Property convertTo(Units type) {
         if (!type.type.equals(this.unitType.type))
             throw new RuntimeException("can not convert "+this.unitType+" to "+type);
-        this.value = (this.getUnitValue() - (this.addends = type.addends)) /
+        this.value = (this.getUnitValue() - (this.addend = type.addend)) /
                 (this.multiplicand = type.multiplicand);
         this.unitType = type;
         return this;

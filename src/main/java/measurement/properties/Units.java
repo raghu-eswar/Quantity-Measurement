@@ -21,12 +21,12 @@ public enum Units {
     POUND( 453592.33 ,"WEIGHT"), OUNCE( 28349.5, "WEIGHT"), TONNE(1000000000, "WEIGHT");
 
     public double multiplicand;
-    public double addends;
+    public double addend;
     public String type;
 
-    Units(double multiplicand, double addends, String type) {
+    Units(double multiplicand, double addend, String type) {
         this(multiplicand, type);
-        this.addends = addends;
+        this.addend = addend;
     }
 
     Units(double multiplicand, String type) {

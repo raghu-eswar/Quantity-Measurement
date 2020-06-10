@@ -11,7 +11,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.MockitoRule;
 
 import static measurement.properties.Units.*;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestConverter {
@@ -35,6 +37,22 @@ public class TestConverter {
     public void givenEquivalentZeroValuesOfCelsiusAndKelvin_thenAreEqual_shouldReturnTrue() {
         boolean status = converter.areEqual(new Temperature(0, CELSIUS), new Temperature(273.15, KELVIN));
         assertTrue(status);
+    }
+
+    @Test
+    public void givenValidYard_thenAdd_shouldAddYard() {
+        Length meter = mock(Length.class);
+        when(meter.add(any())).thenReturn(new Length(1.9144, METER));
+        assertEquals(new Length(1.9144, METER), converter.add(meter, new Length(1, YARD)));
+        verify(meter).add(any());
+    }
+
+    @Test
+    public void givenValidMile_thenConvert_shouldConvertToKilometer() {
+        Length mile = mock(Length.class);
+        when(mile.convertTo(KILOMETER)).thenReturn(new Length(1.60934, KILOMETER));
+        assertEquals(new Length(1.60934, KILOMETER), converter.convert(KILOMETER, mile));
+        verify(mile).convertTo(KILOMETER);
     }
 
 }
